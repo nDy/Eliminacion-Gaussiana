@@ -7,15 +7,16 @@
 #include <iostream>
 #include "../lib/mmio.h"
 #include "../lib/Matrix.h"
+#include "../lib/AXb.h"
 using namespace std;
 
 int main(int argc, char **argv) {
 
-	Matrix* matrix;
+	Matrix* A;
 
-	matrix = new Matrix(100, 10);
+	A = new Matrix(100, 10);
 
-	delete matrix;
+	delete A;
 
 	return 0;
 }

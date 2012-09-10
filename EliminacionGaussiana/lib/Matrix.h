@@ -46,14 +46,18 @@ public:
 			this->Data = new PointerVector*[this->Size];
 		}
 
-		return this->Data[Y]->insert(X, Data);
+		return this->Data[Y - 1]->insert(X, Data);
 	}
 
 	double get(int X, int Y) {
 		if (this->isNull()) {
-			return NULL;
+			return 0.0;
 		}
-		return this->Data[Y]->get(X);
+		return this->Data[Y - 1]->get(X);
+	}
+
+	int size() {
+		return this->Size;
 	}
 
 };

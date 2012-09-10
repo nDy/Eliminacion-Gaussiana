@@ -32,14 +32,14 @@ public:
 	}
 
 	bool insert(int Position, double Data) {
-		if (Position >= this->Size)
+		if (Position > this->Size)
 			return false;
 
 		if (this->isNull()) {
 			this->Data = new double[this->Size];
 		}
 
-		this->Data[Position] = Data;
+		this->Data[Position-1] = Data;
 
 		this->isNull();
 
@@ -48,9 +48,13 @@ public:
 
 	double get(int Position){
 		if (this->isNull()) {
-			return NULL;
+			return 0.0;
 		}
-		return this->Data[Position];
+		return this->Data[Position-1];
+	}
+
+	int size(){
+		return this->Size;
 	}
 
 };

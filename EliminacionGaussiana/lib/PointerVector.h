@@ -35,21 +35,27 @@ public:
 	}
 
 	bool insert(int Position, double Data) {
-		if (Position >= this->Size*this->DataSize)
+		if (Position >= this->Size * this->DataSize)
 			return false;
 
 		if (this->isNull()) {
 			this->Data = new DataVector(this->DataSize);
 		}
 
-		return this->Data[Position/this->DataSize].insert(Position-(Position/this->DataSize),Data);
+		return this->Data[Position / this->DataSize - 1].insert(
+				Position - (Position / this->DataSize), Data);
 	}
 
 	double get(int Position) throw (char*) {
 		if (this->isNull()) {
-			return NULL;
+			return 0.0;
 		}
-		return this->Data[Position/this->DataSize].get(Position-(Position/this->DataSize));
+		return this->Data[Position / this->DataSize - 1].get(
+				Position - (Position / this->DataSize));
+	}
+
+	int size() {
+		return this->Size;
 	}
 
 };
