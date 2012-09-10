@@ -44,7 +44,7 @@ public:
 		return true;
 	}
 
-	double get(int Position) throw (char*){
+	double get(int Position){
 		if (this->isNull()) {
 			return NULL;
 		}

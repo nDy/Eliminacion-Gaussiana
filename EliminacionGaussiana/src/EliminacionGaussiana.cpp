@@ -6,8 +6,7 @@
 
 #include <iostream>
 #include "../lib/mmio.h"
-#include "../lib/DataVector.h"
-#include "../lib/PointerVector.h"
+#include "../lib/Matrix.h"
 using namespace std;
 
 int main(int argc, char **argv) {
