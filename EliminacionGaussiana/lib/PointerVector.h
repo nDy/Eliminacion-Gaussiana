@@ -4,7 +4,7 @@
 
 class PointerVector {
 private:
-	DataVector* Data;
+	DataVector** Data;
 	int Size;
 	int DataSize;
 public:
@@ -24,7 +24,7 @@ public:
 		}
 
 		for (int i = 0; i < Size; i++) {
-			if (!this->Data[i].isNull()) {
+			if (!this->Data[i]->isNull()) {
 				return false;
 			}
 		}
@@ -35,22 +35,31 @@ public:
 	}
 
 	bool insert(int Position, double Data) {
-		if (Position >= this->Size * this->DataSize)
-			return false;
 
-		if (this->isNull()) {
-			this->Data = new DataVector(this->DataSize);
+		if (Position >= this->Size * this->DataSize) {
+			return false;
 		}
 
-		return this->Data[Position / this->DataSize - 1].insert(
-				Position - (Position / this->DataSize), Data);
+		if (this->isNull()) {
+			this->Data = new DataVector*[this->Size / this->DataSize];
+		}
+		std::cout << "Build" << std::endl;
+		if (this->Data[(Position / this->DataSize) - 1] == NULL) {
+
+			this->Data[(Position / this->DataSize) - 1] = new DataVector(
+					this->DataSize);
+
+		}
+
+		return this->Data[(Position / this->DataSize) - 1]->insert(
+				(Position % this->DataSize), Data);
 	}
 
 	double get(int Position) throw (char*) {
 		if (this->isNull()) {
 			return 0.0;
 		}
-		return this->Data[Position / this->DataSize - 1].get(
+		return this->Data[Position / this->DataSize - 1]->get(
 				Position - (Position / this->DataSize));
 	}
 

@@ -4,7 +4,9 @@
 class DataVector {
 private:
 	double* Data;
+
 	int Size;
+
 public:
 
 	DataVector(int Size) {
@@ -16,6 +18,7 @@ public:
 	}
 
 	bool isNull() {
+
 		if (this->Data == NULL) {
 			return true;
 		}
@@ -32,16 +35,16 @@ public:
 	}
 
 	bool insert(int Position, double Data) {
+
 		if (Position > this->Size)
 			return false;
 
-		if (this->isNull()) {
-			this->Data = new double[this->Size];
-		}
+		std::cout<<"llega"<<std::endl;
 
-		this->Data[Position-1] = Data;
+		this->Data[Position-1] = Data; //AQUI ESTA EL ERROR
 
 		this->isNull();
+
 
 		return true;
 	}
