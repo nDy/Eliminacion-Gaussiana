@@ -11,5 +11,12 @@ using namespace std;
 
 int main(int argc, char **argv) {
 
+	Matrix* matrix;
+
+	matrix = new Matrix(100, 10);
+
+	delete matrix;
+
+	return 0;
 }
 

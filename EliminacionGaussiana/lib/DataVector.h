@@ -41,6 +41,8 @@ public:
 
 		this->Data[Position] = Data;
 
+		this->isNull();
+
 		return true;
 	}
 
