@@ -13,6 +13,10 @@ public:
 		this->Size = Size;
 	}
 
+	DataVector() {
+
+	}
+
 	~DataVector() {
 		delete[] this->Data;
 	}
@@ -29,34 +33,34 @@ public:
 			}
 		}
 
-		delete[] this->Data;
+		this->Data = NULL;
 
 		return true;
 	}
 
 	bool insert(int Position, double Data) {
-
 		if (Position > this->Size)
 			return false;
+		if (this->Data == NULL)
+			this->Data = new double[this->Size];
 
-		this->Data = new double[this->Size];
-
-		this->Data[Position-1] = Data; //AQUI ESTA EL ERROR
+		this->Data[Position] = Data;
 
 		this->isNull();
-
 
 		return true;
 	}
 
-	double get(int Position){
-		if (this->isNull()) {
+	double get(int Position) {
+
+		if (this->Data == NULL) {
+
 			return 0.0;
 		}
-		return this->Data[Position-1];
+		return this->Data[Position];
 	}
 
-	int size(){
+	int size() {
 		return this->Size;
 	}
 

@@ -24,12 +24,14 @@ public:
 		}
 
 		for (int i = 0; i < Size; i++) {
-			if (!this->Data[i]->isNull()) {
-				return false;
+			for (int j = 0; j < this->Data[i]->size(); j++) {
+				if (this->Data[i]->get(j) != 0) {
+					return false;
+				}
 			}
 		}
 
-		delete[] this->Data;
+		this->Data = NULL;
 
 		return true;
 	}
@@ -40,26 +42,22 @@ public:
 			return false;
 		}
 
-		if (this->isNull()) {
-			this->Data = new DataVector*[this->Size / this->DataSize];
-		}
-		std::cout << "Build" << std::endl;
-		if (this->Data[(Position / this->DataSize) - 1] == NULL) {
+		if (this->Data == NULL)
+			this->Data = new DataVector*[this->Size];
 
-			this->Data[(Position / this->DataSize) - 1] = new DataVector(
+		if (this->Data[(Position / this->DataSize)] == NULL)
+			this->Data[(Position / this->DataSize)] = new DataVector(
 					this->DataSize);
 
-		}
-
-		return this->Data[(Position / this->DataSize) - 1]->insert(
+		return this->Data[(Position / this->DataSize)]->insert(
 				(Position % this->DataSize), Data);
 	}
 
 	double get(int Position) throw (char*) {
-		if (this->isNull()) {
+		if (this->Data == NULL) {
 			return 0.0;
 		}
-		return this->Data[Position / this->DataSize - 1]->get(
+		return this->Data[Position / this->DataSize]->get(
 				Position - (Position / this->DataSize));
 	}
 

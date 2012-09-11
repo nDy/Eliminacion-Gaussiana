@@ -8,6 +8,7 @@
 #include "../lib/mmio.h"
 #include "../lib/Matrix.h"
 #include "../lib/DataVector.h"
+#include "../lib/PointerVector.h"
 using namespace std;
 
 DataVector* SolveGauss(Matrix*& A, DataVector*& b) {
@@ -33,32 +34,33 @@ DataVector* SolveGauss(Matrix*& A, DataVector*& b) {
 }
 
 int main(int argc, char **argv) {
-/*
-	Matrix* A;
+	/*
+	 Matrix* A;
 
-	A = new Matrix(10, 5);
+	 A = new Matrix(10, 5);
 
-	A->insert(1,5,5.9542);
+	 A->insert(1,5,5.9542);
 
-	for (int i = 1; i <= 10; i++) {
-		for (int j = 1; j <= 10; j++) {
-			cout<<A->get(i,j)<<" ";
-		}
-		cout<<endl;
+	 for (int i = 1; i <= 10; i++) {
+	 for (int j = 1; j <= 10; j++) {
+	 cout<<A->get(i,j)<<" ";
+	 }
+	 cout<<endl;
+	 }
+
+	 delete A;
+	 */
+
+	PointerVector* A;
+	A = new PointerVector(5, 3);
+
+	A->insert(0,15.32145);
+
+	for (int j = 0; j < A->size(); j++) {
+		cout << A->get(j) << " ";
 	}
 
-	delete A;
-*/
 
-	DataVector* A;
-
-	A= new DataVector(5);
-
-	A->insert(3,5.7536);
-
-	for (int j = 1; j <= 5; j++) {
-				cout<<A->get(j)<<" ";
-			}
 
 	delete A;
 
