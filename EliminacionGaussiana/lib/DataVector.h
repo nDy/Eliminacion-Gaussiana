@@ -39,7 +39,7 @@ public:
 		if (Position > this->Size)
 			return false;
 
-		std::cout<<"llega"<<std::endl;
+		this->Data = new double[this->Size];
 
 		this->Data[Position-1] = Data; //AQUI ESTA EL ERROR
 
