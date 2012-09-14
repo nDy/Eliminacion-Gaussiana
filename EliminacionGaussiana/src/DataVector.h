@@ -1,6 +1,8 @@
 #ifndef DATAVECTOR_H_
 #define DATAVECTOR_H_
 
+#include <cstddef>
+
 class DataVector {
 private:
 	double* Data;
